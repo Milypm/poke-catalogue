@@ -1,0 +1,7 @@
+const types = {
+  GENERATION_FILTER: 'GENERATION_FILTER',
+  TYPE_FILTER: 'TYPE_FILTER',
+  POKEMON_DETAILS: 'POKEMON_DETAILS',
+};
+
+export default types;
