@@ -1,36 +1,33 @@
 import types from './types';
-import { fetchByGen } from '../API/api';
 
 export const initialState = {
   generationFilter: 'all',
   typeFilter: 'all',
   typeFilterByGen: [
-    'normal',
-    'fighting',
-    'flying',
-    'poison',
-    'ground',
-    'rock',
-    'bug',
-    'ghost',
-    'steel',
-    'fire',
-    'water',
-    'grass',
-    'electric',
-    'psychic',
-    'ice',
-    'dragon',
-    'dark',
-    'fairy',
+    'All',
+    'Normal',
+    'Fighting',
+    'Flying',
+    'Poison',
+    'Ground',
+    'Rock',
+    'Bug',
+    'Ghost',
+    'Steel',
+    'Fire',
+    'Water',
+    'Grass',
+    'Electric',
+    'Psychic',
+    'Ice',
+    'Dragon',
+    'Dark',
+    'Fairy',
   ],
-  pokemons: fetchByGen(generationFilter).then((data) => {
-    return data;
-  })
 };
 
-export const getByGeneration = (pokemons) => ({ type: types.GENERATION_FILTER, payload: pokemons });
+export const getByGeneration = (value) => ({ type: types.GENERATION_FILTER, payload: value });
 
-export const getByType = (pokemons) => ({ type: types.TYPE_FILTER, payload: pokemons });
+export const getByType = (value) => ({ type: types.TYPE_FILTER, payload: value });
 
-export const getDetails = (pokemon) => ({ type: types.POKEMON_DETAILS, payload: pokemon });
+// export const getDetails = (pokemon) => ({ type: types.POKEMON_DETAILS, payload: pokemon });
