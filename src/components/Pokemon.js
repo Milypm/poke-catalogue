@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 
-const Pokemon = ({ pokeItem }) => {
-  const { name, image } = pokeItem;
+const Pokemon = ({ key, pokeItem }) => {
+  const { name, img } = pokeItem;
+  // console.log('pokeItem', pokeItem);
   return (
-    <div className="pokeItem">
-      <img src={image} alt={`${name} Pokemon`} />
+    <div key={key} className="pokeItem">
+      <img src={img} alt={`${name} Pokemon`} />
       <p className="pokeItem-name">{name}</p>
     </div>
   );
@@ -12,7 +13,8 @@ const Pokemon = ({ pokeItem }) => {
 Pokemon.propTypes = {
   pokeItem: PropTypes.shape({
     name: PropTypes.string,
-    image: PropTypes.string,
+    img: PropTypes.string,
   }).isRequired,
+  key: PropTypes.string.isRequired,
 };
 export default Pokemon;

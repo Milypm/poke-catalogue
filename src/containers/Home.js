@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchByGen, fetchByType } from '../API/api';
+import { fetchPokemons } from '../API/api';
 import Navbar from './Navbar';
 import Pokemon from '../components/Pokemon';
+import Loading from '../components/Loading';
+import '../styles/home.css';
 
 const Home = (props) => {
   const { generationFilter, typeFilter } = props;
   const [pokemonsList, setPokemonsList] = useState([]);
   useEffect(() => {
-    setPokemonsList(typeFilter !== 'all' ? fetchByType(props).then((data) => data)
-      : fetchByGen(generationFilter).then((data) => data));
+    fetchPokemons({ generationFilter, typeFilter }).then((data) => {
+      setPokemonsList(data);
+    });
   }, [generationFilter, typeFilter]);
   return (
     <div className="home">
@@ -19,9 +22,12 @@ const Home = (props) => {
         <h1>Home</h1>
         <div className="pokemons-div">
           {
-            pokemonsList.map((pokeItem) => (
-              <Pokemon key={pokeItem.id} pokeItem={pokeItem} />
-            ))
+            pokemonsList.length === 0
+              ? <Loading />
+              : pokemonsList.map((pokeItem) => {
+                console.log('pokeItem');
+                return <Pokemon key={pokeItem.name} pokeItem={pokeItem} />;
+              })
           }
         </div>
       </section>

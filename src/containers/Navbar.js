@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getByGeneration, getByType } from '../actions/index';
 import Filters from '../components/Filters';
+import pokeFetch from '../assets/images/pokeFetch.png';
 import '../styles/navbar.css';
 
 const Navbar = (props) => {
@@ -14,9 +15,9 @@ const Navbar = (props) => {
     props.getByType(e.target.value);
   };
   return (
-    <navbar className="navbar">
+    <nav className="navbar">
       <div className="title-filters">
-        <h3>PokeFetch!</h3>
+        <img src={pokeFetch} alt="PokeFetch Logo" />
         <Filters
           handleGenChange={handleGenChange}
           handleTypeChange={handleTypeChange}
@@ -25,7 +26,7 @@ const Navbar = (props) => {
           typeFilterByGen={typeFilterByGen}
         />
       </div>
-    </navbar>
+    </nav>
   );
 };
 Navbar.propTypes = {

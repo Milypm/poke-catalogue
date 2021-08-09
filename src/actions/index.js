@@ -1,10 +1,10 @@
 import types from './types';
 
 export const initialState = {
-  generationFilter: 'all',
-  typeFilter: 'all',
+  generationFilter: '1',
+  typeFilter: 'none',
   typeFilterByGen: [
-    'All',
+    'None',
     'Normal',
     'Fighting',
     'Flying',
@@ -13,7 +13,6 @@ export const initialState = {
     'Rock',
     'Bug',
     'Ghost',
-    'Steel',
     'Fire',
     'Water',
     'Grass',
@@ -21,8 +20,6 @@ export const initialState = {
     'Psychic',
     'Ice',
     'Dragon',
-    'Dark',
-    'Fairy',
   ],
 };
 
