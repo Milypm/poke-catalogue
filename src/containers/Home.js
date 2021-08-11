@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchPokemons } from '../API/api';
 import Navbar from './Navbar';
-import Pokemon from '../components/Pokemon';
+// import Pokemon from '../components/Pokemon';
 import Loading from '../components/Loading';
 import '../styles/home.css';
 
@@ -15,6 +15,7 @@ const Home = (props) => {
       setPokemonsList(data);
     });
   }, [generationFilter, typeFilter]);
+  const pokesList = [];
   return (
     <div className="home">
       <Navbar />
@@ -25,10 +26,18 @@ const Home = (props) => {
             pokemonsList.length === 0
               ? <Loading />
               : pokemonsList.map((pokeItem) => {
-                console.log('pokeItem');
-                return <Pokemon key={pokeItem.name} pokeItem={pokeItem} />;
+                pokeItem.then((data) => pokesList.push(data));
+                console.log(pokesList);
+                return true;
               })
           }
+          {/* {
+            pokesList.map((obj) => {
+              console.log(obj.name, obj.img);
+                <Pokemon key={obj.name} pokeItem={obj} />;
+                return true;
+            })
+          } */}
         </div>
       </section>
     </div>
